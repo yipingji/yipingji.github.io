@@ -14,94 +14,325 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <style>
+    body {
+      background-color: #ffffff;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .profile-links {
+      margin-top: 1em;
+      font-size: 0.95em;
+    }
+
+    .profile-links a {
+      color: #337ab7;
+      text-decoration: none;
+      margin: 0 0.4em;
+    }
+
+    .profile-links a:hover,
+    .profile-links a:focus {
+      text-decoration: underline;
+    }
+
+    .section-title {
+      border-bottom: 2px solid #333;
+      padding-bottom: 0.3em;
+      display: inline-block;
+    }
+
+    .publication-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .publication-item {
+      border-left: 3px solid #d1d5db;
+      margin-bottom: 1.5em;
+      padding: 1.2em 0 1.2em 1.1em;
+    }
+
+    .publication-title {
+      font-weight: 600;
+      font-size: 1.1em;
+      margin: 0 0 0.35em;
+    }
+
+    .publication-title a {
+      color: #222;
+      text-decoration: none;
+    }
+
+    .publication-title a:hover,
+    .publication-title a:focus {
+      text-decoration: underline;
+    }
+
+    .publication-authors {
+      color: #444;
+      margin: 0;
+    }
+
+    .publication-meta {
+      margin-top: 0.6em;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6em;
+      font-size: 0.9em;
+    }
+
+    .publication-badge {
+      display: inline-block;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      font-size: 0.8em;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background-color: #e5e7eb;
+      color: #333;
+    }
+
+    .publication-badge-preprint {
+      background-color: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .publication-badge-conference {
+      background-color: #ede9fe;
+      color: #5b21b6;
+    }
+
+    .publication-links a {
+      color: #1d4ed8;
+      text-decoration: none;
+      margin-right: 0.6em;
+    }
+
+    .publication-links a:last-child {
+      margin-right: 0;
+    }
+
+    .publication-links a:hover,
+    .publication-links a:focus {
+      text-decoration: underline;
+    }
+
+    .sidebar-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 220px;
+      background-color: #222;
+      color: #fff;
+      padding: 30px 20px;
+    }
+
+    .sidebar-inner {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 32px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sidebar-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar-nav a {
+      color: #ddd;
+      display: block;
+      padding: 8px 12px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .sidebar-nav a:hover,
+    .sidebar-nav a:focus {
+      color: #fff;
+      background-color: #111;
+      text-decoration: none;
+    }
+
+    .content-wrapper {
+      margin-left: 240px;
+      padding: 40px 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-photo {
+      width: 400px;
+      max-width: 100%;
+      border-radius: 6px;
+      display: block;
+      margin: 0 auto 1.5em;
+    }
+
+    .main-content {
+      width: 100%;
+      max-width: 960px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar-nav {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 15px;
+      }
+
+      .sidebar-inner {
+        gap: 10px;
+      }
+
+      .sidebar-nav ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .sidebar-nav li {
+        margin-bottom: 0;
+      }
+
+      .sidebar-nav a {
+        display: inline-block;
+        padding: 6px 10px;
+      }
+
+      .content-wrapper {
+        margin-left: 0;
+        padding: 20px 15px;
+      }
+    }
+  </style>
 </head>
 <body>
 
 
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-	  <div class="container">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-		</div>
-
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-				  <li><a href="index.html">Home</a></li>
+<!-- Sidebar Navigation -->
+	<nav class="sidebar-nav" role="navigation">
+	  <div class="sidebar-inner">
+		  <div class="sidebar-title">Yiping Ji</div>
+		  <ul>
+				  <li><a href="index.html">About</a></li>
 				  <li><a href="#">Projects</a></li>
-				  <li><a href="#publications">Publications</a></li> 
-				  <li><a href="#">CV</a></li> 
+				  <li><a href="#publications">Publications</a></li>
+				  <li><a href="#">CV</a></li>
 		  </ul>
-		</div>
 	  </div>
 	</nav>
   
   <!-- Page Content -->
-    <div class="container">
+    <div class="content-wrapper">
+      <div class="container main-content">
 
         <div class="row">
 
             <!-- Entries Column -->
-            <div class="col-md-8" style="height: 100vh;">
+            <div class="col-md-12" style="height: 100vh;">
                 
                 <!-- Main Image -->
-                <img class="img-responsive" src="photo.gif" alt=""><br>
-                
-                <div style="margin-top:3%; text-align:justify;">                
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing <a href="#">elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-					
-					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-					
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+                <!-- <img class="img-responsive" src="photo.gif" alt=""><br> -->
+
+                <div style="margin-top:3%; text-align:justify;">
+                    <section aria-labelledby="About-head" style="margin-bottom: 2em;">
+                        <h2 id="About-head" class="section-title">About</h2>
+
+                        <p>Hi there, I am a second-year PhD student supervised by Prof. Simon Lucey at Australian Institute for Machine Learning(AIML), University of Adelaide. Prior to this, I completed my Master's degree by research in Applied Mathematics, supervised by Prof. Nir Sochen at Tel Aviv University, Israel. Before that, I earned my Bachelor's degree in Electrical and Electronic Engineering at Tel Aviv University, Israel.</p>
+
+                        <p>My research focus on representation learning and training deep networks efficiently and effectively. I am current exploring training residual-free transformers.</p>
+
+                        <p class="profile-links">[ <a href="https://scholar.google.com/citations?user=FWbjVosAAAAJ&hl=en">Google Scholar</a> ] · [ <a href="https://www.linkedin.com/in/yiping-ji-111b97142/">LinkedIn</a> ] · [ <a href="https://www.instagram.com/j_ypppp/">Instagram</a> ]</p>
+                    </section>
+
+                    <img class="img-responsive profile-photo" src="img/font.JPEG" alt="Portrait of Yiping Ji" style="margin-bottom: 1.5em;">
+
+                    <section aria-labelledby="publications" style="margin-bottom: 2em;">
+                        <h2 id="publications" class="section-title">Publications</h2>
+
+                        <ul class="publication-list">
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">Efficient Training of Residual-Free Transformers</a></div>
+                            <p class="publication-authors"><strong>Yiping Ji</strong>, Simon Lucey, Nir Sochen</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-preprint">Preprint 2025</span>
+                              <span class="publication-links">
+                                <a href="#">Abs</a> &middot; <a href="#">Paper</a> &middot; <a href="#">Code</a>
+                              </span>
+                            </div>
+                          </li>
+
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">On the Value of Cross-Modal Misalignment in Multimodal Representation Learning</a></div>
+                            <p class="publication-authors"><strong>Yiping Ji</strong>, Yuhang Liu, Tianjiao Jiang, Zhen Zhang, Javen Qinfeng Shi</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-conference">NeurIPS 2025 Spotlight</span>
+                              <span class="publication-links">
+                                <a href="#">Abs</a> &middot; <a href="#">Paper</a> &middot; <a href="#">Project page</a> &middot; <a href="#">Code</a>
+                              </span>
+                            </div>
+                          </li>
+
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">CLAP: Isolating Content from Style through Contrastive Learning with Augmented Prompts</a></div>
+                            <p class="publication-authors"><strong>Yiping Ji</strong>, Yuhang Liu, Zhen Zhang, Javen Qinfeng Shi</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-conference">ECCV 2024</span>
+                              <span class="publication-links">
+                                <a href="#">Abs</a> &middot; <a href="#">Paper</a> &middot; <a href="#">Code</a>
+                              </span>
+                            </div>
+                          </li>
+                        </ul>
+                    </section>
+
+
                 </div>
             </div> 
 
             <!-- Contact Info on the Sidebar -->
-            <div class="col-md-4">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>John Doe</b></div><br>
-                <p><b>john at doe.com</b><br>
-                <p>Random Department<br>
-                University of Randomness<br>
-                Street<br>
-                City <br>
-                Country<br>
+            <!-- <div class="col-md-4">
+                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Yiping Ji</b></div><br>
+                <p>Ph.D. Student <br>
+                  Australian Institute for Mahcine Learning(AIML)<br>
+                Adelaide University<br>
                 </p>
             </div>
-            
+             -->
             
             <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
+            <!-- <div class="col-md-4" style="margin-top:2%">
               <dd><a href="#">Google Scholar</a></dd> 
               <dd><a href="#">Twitter</a></dd>
               <dd><a href="#">LinkedIn</a></dd>
-            </div>
+            </div> -->
             
-            
-            <!-- Publications -->
-            <div class="col-md-8" style="height: 100vh;">    
-                <h2 id="publications">Publications</h2>
-                
-                <strong>Peer-reviewed</strong><br/>
-                <ul>
-                <li class="paper" words="add, your, keywords, here"><a href="#">Full title</a> Names of the authors</li>
-                </ul>
-            
-                <strong>Technical Reports</strong><br/>
-                <ul>
-                <li class="paper" words="add, your, keywords, here"><a href="#">Full title</a>. Details of the report</li>
-                </ul>
-            </div>
-
             
         </div>
-
-
+        
+        
+      </div>
     </div>
     <!-- /.container -->
     
