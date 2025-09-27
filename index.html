@@ -14,6 +14,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     body {
       background-color: #ffffff;
@@ -34,6 +35,15 @@
 
     .profile-links a:hover,
     .profile-links a:focus {
+      text-decoration: underline;
+    }
+
+    .content-wrapper a {
+      color: #1d4ed8;
+    }
+
+    .content-wrapper a:hover,
+    .content-wrapper a:focus {
       text-decoration: underline;
     }
 
@@ -122,6 +132,23 @@
       text-decoration: underline;
     }
 
+    .teaching-list {
+      margin: 0;
+      padding-left: 1.4em;
+    }
+
+    .teaching-item,
+    .service-item,
+    .education-item {
+      margin: 0.6em 0;
+      color: #333;
+    }
+
+    .teaching-term {
+      font-weight: 600;
+      margin-right: 0.3em;
+    }
+
     .sidebar-nav {
       position: fixed;
       top: 0;
@@ -176,8 +203,16 @@
     .content-wrapper {
       margin-left: 240px;
       padding: 40px 30px;
-      display: flex;
+    }
+
+    .content-inner {
+      display: grid;
+      grid-template-columns: auto minmax(0, 960px);
+      column-gap: 40px;
       justify-content: center;
+      align-items: start;
+      max-width: 1280px;
+      margin: 0 auto;
     }
 
     .profile-photo {
@@ -185,7 +220,58 @@
       max-width: 100%;
       border-radius: 6px;
       display: block;
-      margin: 0 auto 1.5em;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .profile-aside {
+      flex-shrink: 0;
+      width: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .profile-card {
+      width: 100%;
+      background-color: #f5f7fa;
+      border-radius: 6px;
+      padding: 18px 20px;
+      color: #333;
+      font-size: 0.95em;
+      line-height: 1.5;
+    }
+
+    .profile-card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6em;
+      font-size: 1.05em;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .profile-title {
+      margin: 0 0 0.8em;
+      font-weight: 500;
+    }
+
+    .profile-social {
+      display: flex;
+      justify-content: flex-start;
+      gap: 16px;
+      font-size: 1.4em;
+      margin-top: 10px;
+    }
+
+    .profile-social a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+
+    .profile-social a:hover,
+    .profile-social a:focus {
+      color: #163d8f;
     }
 
     .main-content {
@@ -224,6 +310,17 @@
         margin-left: 0;
         padding: 20px 15px;
       }
+
+      .content-inner {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+        justify-items: center;
+      }
+
+      .profile-aside {
+        width: 100%;
+        max-width: 400px;
+      }
     }
   </style>
 </head>
@@ -235,17 +332,40 @@
 	  <div class="sidebar-inner">
 		  <div class="sidebar-title">Yiping Ji</div>
 		  <ul>
-				  <li><a href="index.html">About</a></li>
-				  <li><a href="#">Projects</a></li>
+				  <li><a href="#About-head">About</a></li>
 				  <li><a href="#publications">Publications</a></li>
-				  <li><a href="#">CV</a></li>
+				  <li><a href="#education">Education</a></li>
+				  <li><a href="#services">Services</a></li>
+				  <li><a href="#teaching">Teaching</a></li>
 		  </ul>
 	  </div>
 	</nav>
   
   <!-- Page Content -->
     <div class="content-wrapper">
-      <div class="container main-content">
+      <div class="content-inner">
+        <aside class="profile-aside">
+          <img class="img-responsive profile-photo" src="img/font.JPEG" alt="Portrait of Yiping Ji">
+          <div class="profile-card">
+            <h3><strong>Yiping Ji</strong></h3>
+            <p class="profile-title">PhD Student at AIML<br>University of Adelaide</p>
+            <div class="profile-social" aria-label="Contact links">
+              <a href="https://scholar.google.com/citations?user=FWbjVosAAAAJ&hl=en" aria-label="Google Scholar" target="_blank" rel="noopener">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/yiping-ji-111b97142/" aria-label="LinkedIn" target="_blank" rel="noopener">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+              <a href="https://www.instagram.com/j_ypppp/" aria-label="Instagram" target="_blank" rel="noopener">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="mailto:yiping.ji@adelaide.edu.au" aria-label="Email">
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </aside>
+        <div class="container main-content">
 
         <div class="row">
 
@@ -259,34 +379,100 @@
                     <section aria-labelledby="About-head" style="margin-bottom: 2em;">
                         <h2 id="About-head" class="section-title">About</h2>
 
-                        <p>Hi there, I am a second-year PhD student supervised by Prof. Simon Lucey at Australian Institute for Machine Learning(AIML), University of Adelaide. Prior to this, I completed my Master's degree by research in Applied Mathematics, supervised by Prof. Nir Sochen at Tel Aviv University, Israel. Before that, I earned my Bachelor's degree in Electrical and Electronic Engineering at Tel Aviv University, Israel.</p>
+                        <p>Hi there, I am a second-year PhD student supervised by <a href="https://scholar.google.com.au/citations?user=vmAe35UAAAAJ&hl=en">Prof. Simon Lucey</a> at <a href="https://www.adelaide.edu.au/aiml/">Australian Institute for Machine Learning(AIML)</a>, University of Adelaide. Prior to this, I completed my Master's degree by research in Applied Mathematics, supervised by <a href="https://scholar.google.com/citations?user=5ADhH10AAAAJ&hl=en">Prof. Nir Sochen</a> at Tel Aviv University, Israel. Before that, I earned my Bachelor's degree in Electrical and Electronic Engineering at Tel Aviv University, Israel.</p>
 
                         <p>My research focus on representation learning and training deep networks efficiently and effectively. I am current exploring training residual-free transformers.</p>
 
                         <p class="profile-links">[ <a href="https://scholar.google.com/citations?user=FWbjVosAAAAJ&hl=en">Google Scholar</a> ] · [ <a href="https://www.linkedin.com/in/yiping-ji-111b97142/">LinkedIn</a> ] · [ <a href="https://www.instagram.com/j_ypppp/">Instagram</a> ]</p>
                     </section>
-
-                    <img class="img-responsive profile-photo" src="img/font.JPEG" alt="Portrait of Yiping Ji" style="margin-bottom: 1.5em;">
-
-                    <!-- <section aria-labelledby="publications" style="margin-bottom: 2em;">
+                    <section aria-labelledby="publications" style="margin-bottom: 2em;">
                         <h2 id="publications" class="section-title">Publications</h2>
 
                         <ul class="publication-list">
                           <li class="publication-item">
                             <div class="publication-title"><a href="#">Efficient Training of Residual-Free Transformers</a></div>
-                            <p class="publication-authors"><strong>Yiping Ji</strong>, Simon Lucey</p>
+                            <p class="publication-authors"><strong>Yiping Ji</strong>, James Martens, Jianqiao Zheng, Ziqin Zhou, Peyman Moghadam, Xinyu Zhang, Hemanth Saratchandran, Simon Lucey</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-preprint">Preprint 2025</span>
+                            </div>
+                          </li>
+
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">Always Skip Attention</a></div>
+                            <p class="publication-authors"><strong>Yiping Ji</strong>,  Hemanth Saratchandran, Peyman Moghadam, Simon Lucey</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-conference">ICCV 2025</span>
+                              <span class="publication-links">
+                                <a href="https://arxiv.org/abs/2505.01996">Abs</a> &middot; <a href="https://arxiv.org/pdf/2505.01996">Paper</a> &middot
+                              </span>
+                            </div>
+                          </li>
+
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">Efficient Learning with Sine-Activated Low-Rank Matrices</a></div>
+                            <p class="publication-authors"><strong>Yiping Ji*</strong>,  Hemanth Saratchandran*, Cameron Gordon, Zeyu Zhang, Simon Lucey</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-conference">ICLR 2025</span>
+                              <span class="publication-links">
+                                <a href="https://arxiv.org/abs/2403.19243">Abs</a> &middot; <a href="https://openreview.net/pdf?id=cWGCkd7mCp">Paper</a> &middot; <a href="https://yipingji.github.io/sine_activated_PEL/">Project page</a> &middot; <a href="https://github.com/yipingji/Sine-Low-Rank">Code</a>
+                              </span>
+                            </div>
+                          </li>
+
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">Compressing Sine-Activated Low-Rank Adapters through Post-Training Quantization</a></div>
+                            <p class="publication-authors">Cameron Gordon*, Hemanth Saratchandran*, <strong>Yiping Ji*</strong>, Paul Albert, Simon Lucey</p>
                             <div class="publication-meta">
                               <span class="publication-badge publication-badge-preprint">Preprint 2025</span>
                               <span class="publication-links">
-                                <a href="#">Abs</a> &middot; <a href="#">Paper</a> &middot; <a href="#">Code</a>
+                                <a href="https://arxiv.org/abs/2505.21895">Abs</a> &middot; <a href="https://arxiv.org/pdf/2505.21895">Paper</a> &middot;</span>
+                            </div>
+                          </li>
+
+                          <li class="publication-item">
+                            <div class="publication-title"><a href="#">Rethinking Softmax: Self-Attention with Polynomial Activations</a></div>
+                            <p class="publication-authors">Hemanth Saratchandran, Jianqiao Zheng, <strong>Yiping Ji</strong>, Wenbo Zhang, Simon Lucey</p>
+                            <div class="publication-meta">
+                              <span class="publication-badge publication-badge-preprint">Preprint 2024</span>
+                              <span class="publication-links">
+                                <a href="https://arxiv.org/abs/2410.18613">Abs</a> &middot; <a href="https://arxiv.org/pdf/2410.18613">Paper</a> &middot
                               </span>
                             </div>
                           </li>
 
 
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="education" style="margin-bottom: 2em;">
+                        <h2 id="education" class="section-title">Education</h2>
+
+                        <ul class="teaching-list">
+                          <li class="education-item"><span class="teaching-term">Ph.D. in Computer Science</span>University of Adelaide, 2023 -- Present</li>
+                          <li class="education-item"><span class="teaching-term">M.Sc. in Applied Mathematics</span>Tel Aviv University, 2019 -- 2023</li>
+                          <li class="education-item"><span class="teaching-term">B.Sc. in Electrical and Electronic Engineering</span>Tel Aviv University, 2015 -- 2019</li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="services" style="margin-bottom: 2em;">
+                        <h2 id="services" class="section-title">Services</h2>
+
+                        <ul class="teaching-list">
+                          <li class="service-item"><strong>Conference Reviewer:</strong>ICLR (2025, 2026) AAAI (2026)</li>
+                        </ul>
+                    </section>
+
+                    <section aria-labelledby="teaching" style="margin-bottom: 2em;">
+                        <h2 id="teaching" class="section-title">Teaching</h2>
+
+                        <ul class="teaching-list">
+                          <li class="teaching-item"><span class="teaching-term">Semester 2, 2025</span>Supervisor, Student Research Project @ University of Adelaide</li>
+                          <li class="teaching-item"><span class="teaching-term">Semester 2, 2025</span>Tutor, Statistical Machine Learning @ University of Adelaide</li>
+                          <li class="teaching-item"><span class="teaching-term">Trimester 2, 2025</span>Tutor, Using Machine Learning Tools @ University of Adelaide</li>
+                          <li class="teaching-item"><span class="teaching-term">Trimester 1, 2025</span>Tutor, Concepts in Machine Learning and Artificial Intelligence @ University of Adelaide</li>
 
                         </ul>
-                    </section> -->
+                    </section>
 
 
                 </div>
@@ -309,16 +495,14 @@
               <dd><a href="#">LinkedIn</a></dd>
             </div> -->
             
-            
+
         </div>
-        
-        
-      </div>
-    </div>
-    <!-- /.container -->
+      </div> <!-- /.container main-content -->
+    </div> <!-- /.content-inner -->
+  </div> <!-- /.content-wrapper -->
     
     <!-- Other people may like it too! -->
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
+    <!-- <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a>  -->
     
 </body>
 
