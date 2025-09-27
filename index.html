@@ -18,7 +18,7 @@
   <style>
     body {
       background-color: #ffffff;
-      font-size: 17px;
+      font-size: 18px;
       line-height: 1.6;
     }
 
@@ -226,7 +226,7 @@
 
     .profile-aside {
       flex-shrink: 0;
-      width: 300px;
+      width: 330px;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -239,7 +239,7 @@
       border-radius: 6px;
       padding: 18px 20px;
       color: #333;
-      font-size: 0.95em;
+      font-size: 0.9em;
       line-height: 1.5;
     }
 
@@ -258,20 +258,56 @@
 
     .profile-social {
       display: flex;
-      justify-content: flex-start;
-      gap: 16px;
-      font-size: 1.4em;
+      flex-direction: column;
+      gap: 12px;
       margin-top: 10px;
     }
 
-    .profile-social a {
-      color: #1d4ed8;
+    .profile-social .profile-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.98em;
+    }
+
+    .profile-social .profile-link i {
+      width: 22px;
+      font-size: 1em;
+      text-align: center;
+    }
+
+    .profile-social a.profile-link {
+      color: inherit;
       text-decoration: none;
     }
 
-    .profile-social a:hover,
-    .profile-social a:focus {
-      color: #163d8f;
+    .profile-social a.profile-link:hover,
+    .profile-social a.profile-link:focus {
+      opacity: 0.8;
+    }
+
+    .profile-social .profile-location {
+      color: #111827;
+    }
+
+    .profile-social .profile-location i {
+      color: #111827;
+    }
+
+    .profile-link-google {
+      color: #4285F4;
+    }
+
+    .profile-link-linkedin {
+      color: #004182;
+    }
+
+    .profile-link-instagram {
+      color: #E4405F;
+    }
+
+    .profile-link-email {
+      color: #DC2626;
     }
 
     .main-content {
@@ -350,20 +386,28 @@
           <img class="img-responsive profile-photo" src="img/font.JPEG" alt="Portrait of Yiping Ji">
           <div class="profile-card">
             <h3><strong>Yiping Ji</strong></h3>
-            <p class="profile-title">PhD Student at AIML<br>University of Adelaide</p>
+            <p class="profile-title">PhD Student at Australian Institute for Machine Learning (AIML),University of Adelaide</p>
             <div class="profile-social" aria-label="Contact links">
-              <a href="https://scholar.google.com/citations?user=FWbjVosAAAAJ&hl=en" aria-label="Google Scholar" target="_blank" rel="noopener">
+              <a class="profile-link profile-link-google" href="https://scholar.google.com/citations?user=FWbjVosAAAAJ&hl=en" aria-label="Google Scholar" target="_blank" rel="noopener">
                 <i class="fa-solid fa-graduation-cap"></i>
+                <span>Google Scholar</span>
               </a>
-              <a href="https://www.linkedin.com/in/yiping-ji-111b97142/" aria-label="LinkedIn" target="_blank" rel="noopener">
+              <a class="profile-link profile-link-linkedin" href="https://www.linkedin.com/in/yiping-ji-111b97142/" aria-label="LinkedIn" target="_blank" rel="noopener">
                 <i class="fa-brands fa-linkedin"></i>
+                <span>LinkedIn</span>
               </a>
-              <a href="https://www.instagram.com/j_ypppp/" aria-label="Instagram" target="_blank" rel="noopener">
+              <a class="profile-link profile-link-instagram" href="https://www.instagram.com/j_ypppp/" aria-label="Instagram" target="_blank" rel="noopener">
                 <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
               </a>
-              <a href="mailto:yiping.ji@adelaide.edu.au" aria-label="Email">
+              <a class="profile-link profile-link-email" href="mailto:yiping.ji@adelaide.edu.au" aria-label="Email">
                 <i class="fa-solid fa-envelope"></i>
+                <span>Email</span>
               </a>
+              <div class="profile-link profile-location">
+                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                <span>Adelaide, Australia</span>
+              </div>
             </div>
           </div>
         </aside>
